@@ -1,0 +1,62 @@
+diff --git a/db/migrate/20191006002604_create_cars.rb b/db/migrate/20191006002604_create_cars.rb
+deleted file mode 100644
+index 89c490c..0000000
+--- a/db/migrate/20191006002604_create_cars.rb
++++ /dev/null
+@@ -1,11 +0,0 @@
+-class CreateCars < ActiveRecord::Migration[6.0]
+-  def change
+-    create_table :cars do |t|
+-      t.string :model
+-      t.string :vin
+-      t.integer :make
+-
+-      t.timestamps
+-    end
+-  end
+-end
+diff --git a/db/migrate/20191006005821_create_car_to_parts.rb b/db/migrate/20191006005821_create_car_to_parts.rb
+deleted file mode 100644
+index f613f0f..0000000
+--- a/db/migrate/20191006005821_create_car_to_parts.rb
++++ /dev/null
+@@ -1,8 +0,0 @@
+-class CreateCarToParts < ActiveRecord::Migration[6.0]
+-  def change
+-    create_table :car_to_parts do |t|
+-
+-      t.timestamps
+-    end
+-  end
+-end
+diff --git a/db/schema.rb b/db/schema.rb
+index c339647..1995c01 100644
+--- a/db/schema.rb
++++ b/db/schema.rb
+@@ -10,7 +10,7 @@
+ #
+ # It's strongly recommended that you check this file into your version control system.
+ 
+-ActiveRecord::Schema.define(version: 2019_10_06_005821) do
++ActiveRecord::Schema.define(version: 2019_10_05_234552) do
+ 
+   create_table "car_manufacturers", force: :cascade do |t|
+     t.string "name"
+@@ -26,17 +26,4 @@ ActiveRecord::Schema.define(version: 2019_10_06_005821) do
+     t.datetime "updated_at", precision: 6, null: false
+   end
+ 
+-  create_table "car_to_parts", force: :cascade do |t|
+-    t.datetime "created_at", precision: 6, null: false
+-    t.datetime "updated_at", precision: 6, null: false
+-  end
+-
+-  create_table "cars", force: :cascade do |t|
+-    t.string "model"
+-    t.string "vin"
+-    t.integer "make"
+-    t.datetime "created_at", precision: 6, null: false
+-    t.datetime "updated_at", precision: 6, null: false
+-  end
+-
+ end

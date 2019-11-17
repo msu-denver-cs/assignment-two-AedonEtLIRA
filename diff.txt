@@ -1,0 +1,49 @@
+diff --git a/.idea/.generators b/.idea/.generators
+index a9beaca..1618976 100644
+--- a/.idea/.generators
++++ b/.idea/.generators
+@@ -5,4 +5,4 @@ You are allowed to:
+ 2. Remove generators
+ 3. Add installed generators
+ To add new installed generators automatically delete this file and reload the project.
+---><GeneratorsGroup><Generator name="active_record:application_record" /><Generator name="application_record" /><Generator name="assets" /><Generator name="channel" /><Generator name="controller" /><Generator name="generator" /><Generator name="helper" /><Generator name="integration_test" /><Generator name="jbuilder" /><Generator name="job" /><Generator name="mailbox" /><Generator name="mailer" /><Generator name="migration" /><Generator name="model" /><Generator name="resource" /><Generator name="scaffold" /><Generator name="scaffold_controller" /><Generator name="system_test" /><Generator name="task" /><Generator name="test_unit:channel" /><Generator name="test_unit:generator" /><Generator name="test_unit:mailbox" /><Generator name="test_unit:plugin" /></GeneratorsGroup></Settings>
++--><GeneratorsGroup><Generator name="active_record:migration" /><Generator name="active_record:model" /><Generator name="active_record:observer" /><Generator name="active_record:session_migration" /><Generator name="controller" /><Generator name="erb:controller" /><Generator name="erb:mailer" /><Generator name="erb:scaffold" /><Generator name="generator" /><Generator name="helper" /><Generator name="integration_test" /><Generator name="mailer" /><Generator name="metal" /><Generator name="migration" /><Generator name="model" /><Generator name="model_subclass" /><Generator name="observer" /><Generator name="performance_test" /><Generator name="plugin" /><Generator name="resource" /><Generator name="scaffold" /><Generator name="scaffold_controller" /><Generator name="session_migration" /><Generator name="stylesheets" /><Generator name="test_unit:controller" /><Generator name="test_unit:helper" /><Generator name="test_unit:integration" /><Generator name="test_unit:mailer" /><Generator name="test_unit:model" /><Generator name="test_unit:observer" /><Generator name="test_unit:performance" /><Generator name="test_unit:plugin" /><Generator name="test_unit:scaffold" /></GeneratorsGroup></Settings>
+diff --git a/app/controllers/car_parts_controller.rb b/app/controllers/car_parts_controller.rb
+index b3562d0..97e906b 100644
+--- a/app/controllers/car_parts_controller.rb
++++ b/app/controllers/car_parts_controller.rb
+@@ -10,9 +10,8 @@ class CarPartsController < ApplicationController
+     @carPart.name = @carPartParams[:name]
+     @carPart.description = @carPartParams[:description]
+ 
+-
+     if @carPart.save
+-      redirect_to new_car_part_path
++      redirect_to new_car_path
+     end
+   end
+ end
+diff --git a/app/views/car_manufacturers/new.html.erb b/app/views/car_manufacturers/new.html.erb
+index a8a7918..8580375 100644
+--- a/app/views/car_manufacturers/new.html.erb
++++ b/app/views/car_manufacturers/new.html.erb
+@@ -7,7 +7,7 @@ Enter the Car Manufacturer information
+ <% end -%>
+ 
+ <hr>
+-Created Car Parts
++Created Car Manufacturers
+ <br/><br/>
+ <% if !@carManufacturers.blank? %>
+   <% for item in @carManufacturers %>
+diff --git a/config/routes.rb b/config/routes.rb
+index 1ea770a..04cb6bd 100644
+--- a/config/routes.rb
++++ b/config/routes.rb
+@@ -1,5 +1,6 @@
+ Rails.application.routes.draw do
+   resources :car_parts
+   resources :car_manufacturers
++  resources :cars
+   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+ end

@@ -1,0 +1,2 @@
+class CarToPart < ApplicationRecord
+end

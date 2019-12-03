@@ -17,4 +17,6 @@ To add a controller
 To reset database
     rake db:reset db:migrate
     
+To list that rails routes
+    rails routes
     

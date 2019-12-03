@@ -7,14 +7,15 @@ class CarsController < ApplicationController
 
   def create
     @carParams = params[:carManufacturer]
-    @car = Car.new
-    @carModel = @carParams[:model]
-    @carManufacturer = @carParams[:carManufacturerId]
-    @carVin = @carParams[:carVin]
-    @carPart = @carParams[:carPartId]
-
-    if @car.save
-      redirect_to new_car_path
+    if @carParams != nil
+      @car = Car.new
+      @carModel = @carParams[:model]
+      @carManufacturer = @carParams[:carManufacturerId]
+      @carVin = @carParams[:carVin]
+      @carPart = @carParams[:carPartId]
+      if @car.save
+        redirect_to new_car_path
+      end
     end
   end
 end

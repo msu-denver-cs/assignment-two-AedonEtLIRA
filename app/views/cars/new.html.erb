@@ -21,6 +21,7 @@ Enter the Car information
   <div id="carParts">
     <%= f.label "Car Part" %>
     <%= select :carPart, :carPartId, CarPart.all.collect { |c| [c.name, c.id] } %>
+    <%= link_to "Create New Part", "../car_parts/new" %>
   </div>
 
   Save Car: <%= f.submit %>

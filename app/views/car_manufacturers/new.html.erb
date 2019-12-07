@@ -1,0 +1,17 @@
+Enter the Car Manufacturer information
+
+<%= form_for @carManufacturer do |f| -%>
+  Manufacturer Name: <%= f.text_field :name %><br/>
+  Country: <%= f.text_field :country %><br/>
+  Save Manufacturer: <%= f.submit %>
+<% end -%>
+
+<hr>
+Created Car Manufacturers
+<br/><br/>
+<% if !@carManufacturers.blank? %>
+  <% for item in @carManufacturers %>
+    <%= item.name %> [<%= item.country %>]<br/>
+  <% end %>
+<% else %>
+<% end %>

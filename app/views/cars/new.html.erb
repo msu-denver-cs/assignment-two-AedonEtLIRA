@@ -1,0 +1,28 @@
+Enter the Car information
+
+<%= form_for @car do |f| -%>
+
+  <div id="carModel">
+    <%= f.label "Model" %>
+    <%= f.text_field :model %>
+  </div>
+
+  <div id="carMake">
+    <%= f.label "Make" %>
+    <%= select :carManufacturer, :carManufacturerId, CarManufacturer.all.collect { |c| [c.name, c.id] } %>
+    <%= link_to "Create New Manufacturer", "../car_manufacturers/new" %>
+  </div>
+
+  <div id="carVin">
+    <%= f.label "VIN" %>
+    <%= f.text_field :vin %>
+  </div>
+
+  <div id="carParts">
+    <%= f.label "Car Part" %>
+    <%= select :carPart, :carPartId, CarPart.all.collect { |c| [c.name, c.id] } %>
+    <%= link_to "Create New Part", "../car_parts/new" %>
+  </div>
+
+  Save Car: <%= f.submit %>
+<% end -%>

@@ -1,0 +1,28 @@
+This lists all of the created car parts
+
+<%= form_for @searchParams, method: :get do |f| -%>
+  <div id="partSearch" class="field">
+    <%= f.label "Search" %>
+    <%= f.text_field :searchParams %>
+    <%= f.submit 'Find Part' %>
+  </div>
+  <hr>
+<% end %>
+
+<div id="existingParts">
+  <% @carParts.each do |part| -%>
+    <div>
+      <table>
+        <tr>
+          <td>Name: </td>
+          <td><%= part.name %></td>
+        </tr>
+
+        <tr>
+          <td>Description: </td>
+          <td><%= part.description %></td>
+        </tr>
+      </table>
+    </div>
+<% end %>
+</div>

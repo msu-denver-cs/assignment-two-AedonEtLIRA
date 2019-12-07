@@ -1,0 +1,28 @@
+This lists all of the created car parts
+
+<%= form_for @searchParams, method: :get do |f| -%>
+  <div id="manfacSearch" class="field">
+    <%= f.label "Search" %>
+    <%= f.text_field :searchParams %>
+    <%= f.submit 'Find Manufacturer' %>
+  </div>
+  <hr>
+<% end %>
+
+<div id="existingParts">
+  <% @carManufacturers.each do |manfac|  -%>
+    <div>
+      <table>
+        <tr>
+          <td>Name: </td>
+          <td><%= manfac.name %></td>
+        </tr>
+
+        <tr>
+          <td>Country: </td>
+          <td><%= manfac.country %></td>
+        </tr>
+      </table>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+Enter the Car Part information
+
+<%= form_for @carPart do |f| -%>
+  Car Part Name: <%= f.text_field :name %><br/>
+  Car Part Description: <%= f.text_field :description %><br/>
+  Save Car Part: <%= f.submit %>
+<% end -%>
+
+<hr>
+Created Car Parts
+<br/><br/>
+<% if !@carParts.blank? %>
+  <% for item in @carParts %>
+    <%= item.name %> [<%= item.description %>]<br/>
+  <% end %>
+<% else %>
+<% end %>

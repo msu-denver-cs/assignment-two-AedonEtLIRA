@@ -1,7 +1,7 @@
 This lists all of the created cars
 <%= form_for @searchParams, method: :get do |f| -%>
   <div id="carSearch" class="field">
-    <%= f.label "Search parameters" %>
+    <%= f.label "Search" %>
     <%= f.text_field :searchParams %>
     <%= f.submit 'Find Car' %>
   </div>

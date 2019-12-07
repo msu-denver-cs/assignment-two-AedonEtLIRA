@@ -3,8 +3,8 @@ class CarsController < ApplicationController
 
   def index
     if params[:searchParams]
-      find_cars_by_search_params
       @searchParams = params[:searchParams]
+      find_cars_by_search_params
     else
       @car = Car.new
       @cars = Car.all
@@ -43,7 +43,7 @@ class CarsController < ApplicationController
   end
 
   def find_cars_by_search_params
-    _regex = params[:searchParams].chars.reject(&:empty?).join('+')
+    _regex = @searchParams.chars.reject(&:empty?).join('+')
     _cars = []
 
     Car.all.each do |car|

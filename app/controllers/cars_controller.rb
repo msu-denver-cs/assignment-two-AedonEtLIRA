@@ -1,7 +1,15 @@
 class CarsController < ApplicationController
+  helper_method :get_manufacturer
+
   def index
-    @car = Car.new
-    @cars = Car.all
+    if params[:searchParams]
+      find_cars_by_search_params
+      @searchParams = params[:searchParams]
+    else
+      @car = Car.new
+      @cars = Car.all
+      @searchParams = ""
+    end
   end
 
   def new
@@ -30,17 +38,21 @@ class CarsController < ApplicationController
     end
   end
 
-  def search
-    _carParams = params[:searchParams]
+  def get_manufacturer(id)
+    CarManufacturer.find(id).name
+  end
 
-    if _carParams.nil? or _carParams.empty?
-      @cars = Car.all
-      redirect_to car_path
+  def find_cars_by_search_params
+    _regex = params[:searchParams].chars.reject(&:empty?).join('+')
+    _cars = []
+
+    Car.all.each do |car|
+      _make = get_manufacturer car.make
+      if car.model.match(_regex) or _make.match(_regex)
+        _cars.append car
+      end
     end
 
-    # We want the character order from the search, but we also want lazy searching
-    _regex = _carParams.chars.reject(&:empty?).join('+')
-    @cars = Car.where("model REGEXP ?", _regex)
-    redirect_to car_path
+    @cars = _cars
   end
 end

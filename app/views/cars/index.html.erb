@@ -1,5 +1,5 @@
 This lists all of the created cars
-<%= form_for @car, methd: 'get', path: 'search'  do |f| -%>
+<%= form_for @searchParams, method: :get do |f| -%>
   <div id="carSearch" class="field">
     <%= f.label "Search parameters" %>
     <%= f.text_field :searchParams %>
@@ -11,21 +11,23 @@ This lists all of the created cars
 
 <div id="existingCars">
   <%= @cars.each do |car|  %>
-    <table>
-      <tr>
-        <td>Model: </td>
-        <td><%= car.model %></td>
-      </tr>
+    <div>
+      <table>
+        <tr>
+          <td>Model: </td>
+          <td><%= car.model %></td>
+        </tr>
 
-      <tr>
-        <td>Make: </td>
-        <td><%= car.make %></td>
-      </tr>
+        <tr>
+          <td>Make: </td>
+          <td><%= get_manufacturer car.make %></td>
+        </tr>
 
-      <tr>
-        <td>Vin: </td>
-        <td><%= car.vin %></td>
-      </tr>
-    </table>
+        <tr>
+          <td>Vin: </td>
+          <td><%= car.vin %></td>
+        </tr>
+      </table>
+    </div>
   <% end %>
 </div>

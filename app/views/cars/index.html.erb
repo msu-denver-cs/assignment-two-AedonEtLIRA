@@ -1,0 +1,31 @@
+This lists all of the created cars
+<%= form_for @car, methd: 'get', path: 'search'  do |f| -%>
+  <div id="carSearch" class="field">
+    <%= f.label "Search parameters" %>
+    <%= f.text_field :searchParams %>
+    <%= f.submit 'Find Car' %>
+  </div>
+  <%= link_to "Create new Car", "../cars/new" %>
+  <hr>
+<% end -%>
+
+<div id="existingCars">
+  <%= @cars.each do |car|  %>
+    <table>
+      <tr>
+        <td>Model: </td>
+        <td><%= car.model %></td>
+      </tr>
+
+      <tr>
+        <td>Make: </td>
+        <td><%= car.make %></td>
+      </tr>
+
+      <tr>
+        <td>Vin: </td>
+        <td><%= car.vin %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>

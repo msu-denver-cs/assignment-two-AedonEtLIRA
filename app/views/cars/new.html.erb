@@ -2,12 +2,12 @@ Enter the Car information
 
 <%= form_for @car do |f| -%>
 
-  <div id="carModel" class="field">
+  <div id="carModel">
     <%= f.label "Model" %>
     <%= f.text_field :model %>
   </div>
 
-  <div id="carMake" class="control-group">
+  <div id="carMake">
     <%= f.label "Make" %>
     <%= select :carManufacturer, :carManufacturerId, CarManufacturer.all.collect { |c| [c.name, c.id] } %>
     <%= link_to "Create New Manufacturer", "../car_manufacturers/new" %>

@@ -27,8 +27,12 @@ ActiveRecord::Schema.define(version: 2019_10_06_005821) do
   end
 
   create_table "car_to_parts", force: :cascade do |t|
+    t.integer "car"
+    t.integer "car_part"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["car"], name: "index_car_to_parts_on_car"
+    t.index ["car_part"], name: "index_car_to_parts_on_car_part"
   end
 
   create_table "cars", force: :cascade do |t|
